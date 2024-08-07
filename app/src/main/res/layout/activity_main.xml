@@ -1,65 +1,299 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
     android:layout_gravity="center"
+    android:background="#121212"
+    android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".MainActivity">
 
-   <EditText
-       android:layout_width="match_parent"
-       android:layout_height="100dp"
-       android:hint="Enter Text"
-       android:id="@+id/edtext"
-       android:layout_margin="10dp"/>
 
-
+    <!-- Top Language Selector -->
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:id="@+id/languageSelector"
+        android:layout_width="wrap_content"
+        android:layout_height="50sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/rounded_corners"
+        android:orientation="horizontal"
+        android:padding="8dp">
 
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:id="@+id/spin1" />
+        <TextView
+            android:id="@+id/tvSourceLang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20sp"
+            android:text="India"
+            android:textColor="#FFFFFF" />
 
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:padding="2dp"
-            android:src="@drawable/img"/>
-
-        <Spinner
-            android:layout_width="match_parent"
+            android:id="@+id/ivSwitchLang"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/spin2" />
+            android:padding="8dp"
+            android:layout_marginRight="260dp"
+            android:src="@drawable/img_2" />
 
-
-
-
+        <TextView
+            android:id="@+id/tvTargetLang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+android:layout_marginLeft="-100dp"
+            android:text="English"
+            android:textColor="#FFFFFF" />
+        <ImageView
+            android:id="@+id/engflag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="9dp"
+            android:src="@drawable/img_1" />
     </LinearLayout>
 
-    <Button
+
+    <!-- Source Text CardView -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardSourceText"
+        android:layout_width="match_parent"
+        android:layout_height="164dp"
+        android:layout_below="@id/languageSelector"
+        android:layout_marginTop="16dp"
+        app:cardBackgroundColor="#1F1B24"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/ivSourceAudio"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_audio"
+                android:tint="#FFFFFF" />
+
+            <EditText
+                android:id="@+id/tvSourceText"
+                android:layout_width="match_parent"
+                android:textSize="20sp"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/ivSourceAudio"
+                android:hint="."
+                android:textColor="#FFFFFF" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Translated Text CardView -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardTranslatedText"
+        android:layout_width="match_parent"
+        android:layout_height="276dp"
+        android:layout_below="@id/cardSourceText"
+        android:layout_marginTop="16dp"
+        app:cardBackgroundColor="#1F1B24"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/ivTargetAudio"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_audio"
+                android:tint="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/tvTranslatedText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/ivTargetAudio"
+                android:gravity="center"
+                android:textSize="24sp"
+                android:text=""
+                android:textColor="#FFFFFF" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Feedback Buttons -->
+    <LinearLayout
+        android:id="@+id/feedbackButtons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Translate"
-        android:id="@+id/btn"
-        android:layout_gravity="center"
-        android:textSize="18dp"
-        android:textColor="@color/black"
-        android:layout_marginTop="100dp"/>
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:hint="Result"
-    android:id="@+id/txtresult"
-    android:padding="10dp"
-    android:textSize="20dp"/>
+        android:layout_below="@id/cardTranslatedText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-</LinearLayout>
+        <Button
+            android:id="@+id/btnGood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="Good"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnNotReally"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Not really"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+    <!-- Translate Button -->
+    <ImageView
+        android:id="@+id/btnTranslate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/feedbackButtons"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#BB86FC"
+        android:src="@drawable/img_9"
+        android:text="Translate"
+        android:textColor="#FFFFFF" />
+
+    <!--    <TextView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="Language Translate"-->
+    <!--        android:gravity="center"-->
+    <!--        android:textSize="20dp"-->
+    <!--        android:textColor="@color/black"-->
+    <!--        android:layout_margin="10dp"-->
+    <!--        android:background="#B2BBE8"/>-->
+
+
+    <!--            <androidx.cardview.widget.CardView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="200dp"-->
+    <!--                app:cardCornerRadius="20dp"-->
+    <!--                android:layout_marginTop="40dp"-->
+    <!--                app:cardElevation="10dp"-->
+    <!--                app:cardBackgroundColor="#B9BFE3">-->
+    <!--                <EditText-->
+    <!--                    android:layout_width="200dp"-->
+    <!--                    android:layout_height="100dp"-->
+    <!--                    android:hint="Enter Text"-->
+    <!--                    android:id="@+id/editTextTextToTranslate"-->
+    <!--                    android:layout_marginTop="60sp"/>-->
+    <!--                <ImageView-->
+    <!--                    android:id="@+id/imgrecord"-->
+    <!--                    android:layout_width="30dp"-->
+    <!--                    android:layout_height="30dp"-->
+    <!--                    android:src="@drawable/img_7"-->
+    <!--                    android:layout_marginTop="150dp"-->
+    <!--                    android:layout_marginStart="300dp"/>-->
+    <!--                <ImageView-->
+    <!--                    android:id="@+id/buttonspeaker"-->
+    <!--                    android:layout_width="30dp"-->
+    <!--                    android:layout_height="30dp"-->
+    <!--                    android:src="@drawable/img_5"-->
+    <!--                    android:layout_marginTop="150dp"-->
+    <!--                    android:layout_marginStart="350dp"/>-->
+
+
+    <!--    </androidx.cardview.widget.CardView>-->
+
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:orientation="horizontal"-->
+    <!--        android:layout_marginTop="20dp">-->
+
+
+    <!--        <com.google.android.material.textfield.TextInputLayout-->
+    <!--            android:layout_width="0dp"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_weight="3"-->
+    <!--            android:layout_margin="5dp"-->
+    <!--            android:hint="SELECT"-->
+    <!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">-->
+    <!--                <AutoCompleteTextView-->
+    <!--                    android:id="@+id/language1"-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="match_parent">-->
+
+    <!--                </AutoCompleteTextView>-->
+
+    <!--        </com.google.android.material.textfield.TextInputLayout>-->
+
+    <!--        <ImageView-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:src="@drawable/baseline_arrow_forward_24"/>-->
+
+    <!--        <com.google.android.material.textfield.TextInputLayout-->
+    <!--            android:layout_width="0dp"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_weight="3"-->
+    <!--            android:layout_margin="5dp"-->
+    <!--            android:hint="SELECT"-->
+    <!--            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">-->
+
+    <!--            <AutoCompleteTextView-->
+    <!--                android:id="@+id/language2"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="match_parent">-->
+
+    <!--            </AutoCompleteTextView>-->
+    <!--        </com.google.android.material.textfield.TextInputLayout>-->
+
+
+    <!--    </LinearLayout>-->
+
+
+    <!--<androidx.cardview.widget.CardView-->
+    <!--    android:layout_width="match_parent"-->
+    <!--    android:layout_height="200dp"-->
+    <!--    android:layout_marginTop="30dp"-->
+    <!--    app:cardElevation="10dp"-->
+    <!--    app:cardCornerRadius="20dp"-->
+    <!--    app:cardBackgroundColor="#989EC1">-->
+
+
+    <!--<TextView-->
+    <!--    android:layout_width="match_parent"-->
+    <!--    android:layout_height="match_parent"-->
+    <!--    android:hint="Result"-->
+    <!--    android:id="@+id/txtresult"-->
+    <!--    android:padding="10dp"-->
+    <!--    android:textSize="20dp"/>-->
+    <!--    <ImageView-->
+    <!--        android:layout_width="30dp"-->
+    <!--        android:layout_height="30dp"-->
+    <!--        android:src="@drawable/img_5"-->
+    <!--        android:layout_marginTop="150dp"-->
+    <!--        android:layout_marginStart="350dp"/>-->
+
+    <!--</androidx.cardview.widget.CardView>-->
+
+
+    <!--    <Button-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="Translate"-->
+    <!--        android:id="@+id/buttonTranslate"-->
+    <!--        android:layout_gravity="center"-->
+    <!--        android:textSize="18dp"-->
+    <!--        android:textColor="@color/black"-->
+    <!--        android:layout_marginTop="50dp"/>-->
+
+</RelativeLayout>
+
